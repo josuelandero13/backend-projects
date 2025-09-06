@@ -1,14 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unit Converter | Josue Alandero</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styrles.css" />
+  </head>
+  <body>
     <h1>Unit Converter</h1>
-    <div id="app"></div>
+
+    <div class="converter-container">
+      <!-- First Section -->
+      <div class="converter-section">
+        <h2>Convert From</h2>
+
+        <div class="unit-tabs">
+          <a href="#" class="active">Length</a>
+          <a href="#">Weight</a>
+          <a href="#">Temperature</a>
+        </div>
+
+        <div class="input-group">
+          <label for="value-input">Enter the length to convert</label>
+          <input type="text" id="value-input" placeholder="Enter value..." />
+        </div>
+
+        <div class="input-group">
+          <label for="from-unit">From unit:</label>
+          <select id="from-unit">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="feet">Feet</option>
+            <option value="inches">Inches</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="to-unit">To unit:</label>
+          <select id="to-unit">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="feet">Feet</option>
+            <option value="inches">Inches</option>
+          </select>
+        </div>
+
+        <button id="convert-btn">Convert</button>
+      </div>
+
+      <!-- Second Section -->
+      <div class="converter-section">
+        <h2>Result</h2>
+        <div
+          id="result"
+          style="font-size: 24px; text-align: center; margin: 40px 0"
+        >
+          <div class="unit-tabs">
+            <a href="#" class="active">Length</a>
+            <a href="#">Weight</a>
+            <a href="#">Temperature</a>
+          </div>
+
+          <div>
+            <h3>Result of your calculation</h3>
+            <p></p>
+            <button>Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="js/app.js"></script>
-</body>
+  </body>
 </html>

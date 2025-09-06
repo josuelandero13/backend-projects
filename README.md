@@ -37,14 +37,17 @@ backend-projects/
 ## 📦 Proyectos
 
 ### 1. Unit Converter
+
 Un conversor de unidades desarrollado con TypeScript.
 
 **Características:**
+
 - Interfaz web interactiva
 - Conversión entre diferentes unidades de medida
 - Arquitectura modular y escalable
 
 **Scripts disponibles:**
+
 ```bash
 # Desarrollar
 pnpm --filter unit-converter dev
@@ -59,12 +62,14 @@ pnpm --filter unit-converter start
 ## 🚀 Cómo Empezar
 
 1. Clona el repositorio:
+
    ```bash
    git clone <url-del-repositorio>
    cd backend-projects
    ```
 
 2. Instala las dependencias:
+
    ```bash
    pnpm install
    ```
