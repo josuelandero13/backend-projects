@@ -1,17 +1,19 @@
-import http from "node:http";
 import { ConversionResult } from "./core/types/units";
-import { LengthConverter } from "./core/converters/lengthConverter";
+import { ConverterFactory } from "./core/converters/converterFactory";
+import { UnitCategory } from "./core/types/units";
 
-const convert = (
+const converter = (
   value: number,
   fromUnit: string,
   toUnit: string,
+  unitOfMeasurement: UnitCategory,
 ): ConversionResult => {
   try {
-    const convertedValue = LengthConverter.convert(
+    const convertedValue = ConverterFactory.convert(
       value,
-      fromUnit as any,
-      toUnit as any,
+      fromUnit,
+      toUnit,
+      unitOfMeasurement,
     );
 
     const result: ConversionResult = {
@@ -24,37 +26,9 @@ const convert = (
 
     return result;
   } catch (error) {
-    console.log(`❌ Error converting:`, error.message);
+    console.error(`❌ Error converting:`, (error as Error).message);
     throw error;
   }
 };
 
-const server = http.createServer((request, response) => {
-  if (request.method === "POST" && request.url === "/convert_units") {
-    let body = "";
-
-    request.on("data", (chunk) => {
-      body += chunk;
-    });
-
-    request.on("end", () => {
-      try {
-        const datos = JSON.parse(body);
-        const resultado = convert(datos.value, datos.fromUnit, datos.toUnit);
-
-        response.writeHead(200, { "Content-Type": "application/json" });
-        response.end(JSON.stringify(resultado.convertedValue));
-      } catch (error) {
-        response.writeHead(400, { "Content-Type": "application/json" });
-        response.end(JSON.stringify({ error: "JSON inválido" }));
-      }
-    });
-  } else {
-    response.writeHead(404, { "Content-Type": "text/plain" });
-    response.end("No encontrado");
-  }
-});
-
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
+export default converter;

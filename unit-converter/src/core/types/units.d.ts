@@ -12,15 +12,7 @@ export type WeightUnit = "kilogram" | "gram" | "milligram" | "pound" | "ounce";
 
 export type TemperatureUnit = "celsius" | "fahrenheit" | "kelvin";
 
-export type VolumeUnit = "liter" | "milliliter" | "gallon" | "quart" | "pint";
-
-export type AreaUnit =
-  | "square-meter"
-  | "square-kilometer"
-  | "square-mile"
-  | "square-foot"
-  | "hectare"
-  | "acre";
+export type UnitCategory = "length" | "weight" | "temperature";
 
 export interface ConversionInput {
   value: number;
@@ -34,4 +26,10 @@ export interface ConversionResult {
   toUnit: string;
   convertedValue: number;
   timestamp: Date;
+}
+
+export interface UnitInfo {
+  name: string;
+  symbol: string;
+  category: UnitCategory;
 }
