@@ -4,72 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unit Converter | Josue Alandero</title>
-    <link rel="stylesheet" href="css/styrles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <h1>Unit Converter</h1>
+    <div class="container">
+      <header>
+        <h1>Unit Converter</h1>
+        <p>Convierte entre diferentes unidades de medida fácilmente</p>
+      </header>
 
-    <div class="converter-container">
-      <!-- First Section -->
-      <div class="converter-section">
-        <h2>Convert From</h2>
+      <main class="converter-container">
+        <div class="converter-section">
+          <h2 class="from-section-title">Convert From</h2>
 
-        <div class="unit-tabs">
-          <a href="#" class="active">Length</a>
-          <a href="#">Weight</a>
-          <a href="#">Temperature</a>
-        </div>
-
-        <div class="input-group">
-          <label for="value-input">Enter the length to convert</label>
-          <input type="text" id="value-input" placeholder="Enter value..." />
-        </div>
-
-        <div class="input-group">
-          <label for="from-unit">From unit:</label>
-          <select id="from-unit">
-            <option value="meters">Meters</option>
-            <option value="kilometers">Kilometers</option>
-            <option value="miles">Miles</option>
-            <option value="feet">Feet</option>
-            <option value="inches">Inches</option>
-          </select>
-        </div>
-
-        <div class="input-group">
-          <label for="to-unit">To unit:</label>
-          <select id="to-unit">
-            <option value="meters">Meters</option>
-            <option value="kilometers">Kilometers</option>
-            <option value="miles">Miles</option>
-            <option value="feet">Feet</option>
-            <option value="inches">Inches</option>
-          </select>
-        </div>
-
-        <button id="convert-btn">Convert</button>
-      </div>
-
-      <!-- Second Section -->
-      <div class="converter-section">
-        <h2>Result</h2>
-        <div
-          id="result"
-          style="font-size: 24px; text-align: center; margin: 40px 0"
-        >
-          <div class="unit-tabs">
-            <a href="#" class="active">Length</a>
-            <a href="#">Weight</a>
-            <a href="#">Temperature</a>
+          <div class="category-tabs">
+            <button class="tab active" data-category="length">Length</button>
+            <button class="tab" data-category="weight">Weight</button>
+            <button class="tab" data-category="temperature">Temperature</button>
           </div>
 
-          <div>
-            <h3>Result of your calculation</h3>
-            <p></p>
-            <button>Reset</button>
+          <div class="input-group">
+            <label for="value-input">Enter value to convert</label>
+            <input
+              type="number"
+              id="value-input"
+              placeholder="Enter value..."
+              step="any"
+            />
+            <span class="error-message" id="value-error"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="from-unit">From unit:</label>
+            <select id="from-unit">
+              <option value="">Select unit...</option>
+            </select>
+            <span class="error-message" id="from-unit-error"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="to-unit">To unit:</label>
+            <select id="to-unit">
+              <option value="">Select unit...</option>
+            </select>
+            <span class="error-message" id="to-unit-error"></span>
+          </div>
+
+          <button id="convert-btn" class="btn-primary">Convert</button>
+        </div>
+
+        <div class="converter-section">
+          <h2>Result</h2>
+          <div id="result-display" class="result-display">
+            <div class="result-content">
+              <h3>Result of your calculation</h3>
+              <div id="conversion-result" class="conversion-result">
+                <p>Select units and enter a value to convert</p>
+              </div>
+              <button id="reset-btn" class="btn-secondary">Reset</button>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer>
+        <p>Built with TypeScript & Node</p>
+      </footer>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Converting...</p>
+    </div>
+
+    <div id="error-toast" class="toast hidden">
+      <span id="toast-message"></span>
+      <button onclick="hideToast()">×</button>
     </div>
 
     <script type="module" src="js/app.js"></script>

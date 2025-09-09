@@ -1,6 +1,6 @@
 import http from "node:http";
 import converter from "./main";
-import { PORT } from "./utils/const";
+import { PORT } from "./config/const";
 import { ConversionResult } from "./core/types/units";
 
 const server = http.createServer((request, response) => {

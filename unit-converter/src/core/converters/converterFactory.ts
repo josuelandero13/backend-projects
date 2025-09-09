@@ -53,7 +53,7 @@ export class ConverterFactory {
 
       return converter.getUnitInfo(unit as any);
     } catch (error: any) {
-      throw new Error(`Error obteniendo información: ${error.message}`);
+      throw new Error(`Error getting unit info: ${error.message}`);
     }
   }
 
