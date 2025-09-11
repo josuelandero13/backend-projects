@@ -2,7 +2,11 @@ import { ConversionResult } from "./core/types/units";
 import { ConverterFactory } from "./core/converters/converterFactory";
 import { UnitCategory } from "./core/types/units";
 
-const converter = (
+export const unitCategories = (category: UnitCategory) => {
+  return ConverterFactory.getAvailableUnits(category);
+};
+
+export const converter = (
   value: number,
   fromUnit: string,
   toUnit: string,
@@ -30,5 +34,3 @@ const converter = (
     throw error;
   }
 };
-
-export default converter;

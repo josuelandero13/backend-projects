@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #7189f3 0%, #6e03da 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fcf9eb 0%, #eddbff 100%);
   min-height: 100vh;
   padding: 20px;
   margin-top: 80px;
@@ -55,10 +55,11 @@ header h1 {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  justify-content: center;
 }
 
 .tab {
-  padding: 0.5rem 1rem;
+  padding: 1.5rem 1.5rem;
   border: none;
   border-radius: 5px;
   background: #e9ecef;
@@ -152,11 +153,11 @@ select:focus {
 }
 
 .conversion-result {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #4facfe;
+  color: #000000f7;
   margin: 1rem 0;
-  min-height: 60px;
+  min-height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
