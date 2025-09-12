@@ -1,4 +1,4 @@
-# Unit Converter API
+# Unit Converter
 
 A RESTful API for converting between different units of measurement. This API provides endpoints to get available units and perform unit conversions across different measurement categories.
 
