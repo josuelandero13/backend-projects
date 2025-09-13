@@ -1,0 +1,32 @@
+{
+  "name": "personal-blog",
+  "version": "1.0.0",
+  "description": "Personal blog project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/infrastructure/http/server.ts",
+    "build": "tsc",
+    "start": "node dist/infrastructure/http/server.js",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "keywords": [],
+  "author": "Josue Landero",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "5.1.0",
+    "pino": "9.9.5",
+    "pino-pretty": "13.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.3",
+    "@types/node": "24.3.3",
+    "@types/pino": "7.0.5",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  }
+}
