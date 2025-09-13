@@ -12,19 +12,7 @@ backend-projects/
 ├── package.json          # Dependencias y scripts del workspace raíz
 ├── pnpm-lock.yaml        # Lock file de pnpm
 └── unit-converter/       # Proyecto de conversor de unidades
-    ├── public/           # Archivos estáticos
-    │   ├── css/
-    │   ├── js/
-    │   └── index.html
-    ├── src/              # Código fuente
-    │   ├── core/         # Lógica principal
-    │   ├── utils/        # Utilidades
-    │   └── main.ts       # Punto de entrada
-    ├── .gitignore
-    ├── package.json      # Dependencias específicas del proyecto
-    ├── pnpm-lock.yaml
-    ├── ROADMAP.md        # Planificación del proyecto
-    └── tsconfig.json     # Configuración de TypeScript
+└── personal-blog/        # Proyecto de blog personal
 ```
 
 ## 🛠️ Tecnologías Principales
@@ -33,6 +21,7 @@ backend-projects/
 - **TypeScript** - Superset tipado de JavaScript
 - **ESLint** - Linter para mantener la calidad del código
 - **pnpm** - Gestor de paquetes rápido y eficiente
+- **Express** - Framework web para Node.js
 
 ## 📦 Proyectos
 
@@ -46,18 +35,16 @@ Un conversor de unidades desarrollado con TypeScript.
 - Conversión entre diferentes unidades de medida
 - Arquitectura modular y escalable
 
-**Scripts disponibles:**
+### 2. Personal Blog
 
-```bash
-# Desarrollar
-pnpm --filter unit-converter dev
+Un blog personal desarrollado con TypeScript.
 
-# Construir para producción
-pnpm --filter unit-converter build
+**Características:**
 
-# Iniciar en producción
-pnpm --filter unit-converter start
-```
+- Interfaz web interactiva
+- Sistema de autenticación
+- Sistema de gestión de artículos
+- Arquitectura modular y escalable
 
 ## 🚀 Cómo Empezar
 
