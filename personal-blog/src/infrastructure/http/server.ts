@@ -3,23 +3,25 @@ import cors from "cors";
 import logger from "../../shared/utils/logger";
 import { config } from "../../../config/config";
 import { connectDatabase } from "../database/connection";
-import mongoose from "mongoose";
+import articleRoutes from "./routes/articleRoutes.js";
+import { handleError } from "./middlewares/handleError";
 
-const app = express();
+const app: express.Application = express();
 const PORT = config.port || 3000;
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Health check
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-    database:
-      mongoose.connection.readyState === 1 ? "connected" : "disconnected",
-  });
+// Routes
+app.use("/api/articles", articleRoutes);
+
+// Error handler
+app.use(handleError);
+
+// Not found route
+app.use((_request, response) => {
+  response.status(404).json({ error: "Route not found" });
 });
 
 // Connect to the database and then start the server
@@ -30,6 +32,8 @@ connectDatabase()
     });
   })
   .catch((error) => {
-    logger.error("Failed to start server:", error);
+    logger.error(error, "Failed to start server:");
     process.exit(1);
   });
+
+export default app;
