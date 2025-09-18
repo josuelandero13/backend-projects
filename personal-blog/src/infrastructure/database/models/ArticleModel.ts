@@ -32,7 +32,6 @@ const ArticleSchema: Schema = new Schema({
   },
 });
 
-// Middleware para actualizar la fecha de modificación
 ArticleSchema.pre("save", function (next) {
   this.updatedAt = new Date();
 

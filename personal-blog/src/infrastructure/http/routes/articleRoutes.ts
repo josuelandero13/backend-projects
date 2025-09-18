@@ -30,8 +30,8 @@ router.get("/", (request, response) =>
   articleController.getArticles(request, response),
 );
 
-router.get("/:id", (request, response) =>
-  articleController.getArticleById(request, response),
+router.get("/:id", (request, response, next) =>
+  articleController.getArticleById(request, response, next),
 );
 
 router.post("/", (request, response) =>
@@ -42,8 +42,8 @@ router.put("/:id", (request, response) =>
   articleController.updateArticle(request, response),
 );
 
-router.delete("/:id", (request, response) =>
-  articleController.deleteArticle(request, response),
+router.delete("/:id", (request, response, next) =>
+  articleController.deleteArticle(request, response, next),
 );
 
 export default router;

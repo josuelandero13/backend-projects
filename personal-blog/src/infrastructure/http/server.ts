@@ -16,13 +16,13 @@ app.use(express.json());
 // Routes
 app.use("/api/articles", articleRoutes);
 
-// Error handler
-app.use(handleError);
-
 // Not found route
 app.use((_request, response) => {
   response.status(404).json({ error: "Route not found" });
 });
+
+// Error handler
+app.use(handleError);
 
 // Connect to the database and then start the server
 connectDatabase()

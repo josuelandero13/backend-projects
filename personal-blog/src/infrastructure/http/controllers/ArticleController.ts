@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import {
   GetArticlesUseCase,
   GetArticleByIdUseCase,
@@ -32,7 +32,7 @@ export class ArticleController {
     }
   }
 
-  async getArticleById(request: Request, response: Response): Promise<void> {
+  async getArticleById(request: Request, response: Response, next: NextFunction): Promise<void> {
     try {
       const { id } = request.params;
       const article = await this.getArticleByIdUseCase.execute(id);
@@ -44,9 +44,7 @@ export class ArticleController {
 
       response.status(200).json(article);
     } catch (error) {
-      logger.error(error, "Error getting article:");
-
-      response.status(500).json({ error: "Internal server error" });
+      next(error)
     }
   }
 
@@ -91,7 +89,7 @@ export class ArticleController {
     }
   }
 
-  async deleteArticle(request: Request, response: Response): Promise<void> {
+  async deleteArticle(request: Request, response: Response, next: NextFunction): Promise<void> {
     try {
       const { id } = request.params;
       const success = await this.deleteArticleUseCase.execute(id);
@@ -103,9 +101,7 @@ export class ArticleController {
 
       response.status(204).send();
     } catch (error) {
-      logger.error(error, "Error deleting article:");
-
-      response.status(500).json({ error: "Internal server error" });
+      next(error);
     }
   }
 }
