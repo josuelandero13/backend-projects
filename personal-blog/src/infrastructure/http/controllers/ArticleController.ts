@@ -32,7 +32,11 @@ export class ArticleController {
     }
   }
 
-  async getArticleById(request: Request, response: Response, next: NextFunction): Promise<void> {
+  async getArticleById(
+    request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> {
     try {
       const { id } = request.params;
       const article = await this.getArticleByIdUseCase.execute(id);
@@ -44,7 +48,7 @@ export class ArticleController {
 
       response.status(200).json(article);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
@@ -89,7 +93,11 @@ export class ArticleController {
     }
   }
 
-  async deleteArticle(request: Request, response: Response, next: NextFunction): Promise<void> {
+  async deleteArticle(
+    request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> {
     try {
       const { id } = request.params;
       const success = await this.deleteArticleUseCase.execute(id);

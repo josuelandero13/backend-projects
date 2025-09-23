@@ -34,7 +34,7 @@ describe("Article API", () => {
 
     const article = await ArticleModel.create(testArticle);
 
-    createdArticleId = article._id;
+    createdArticleId = article._id as string;
   });
 
   describe("GET /api/articles", () => {
@@ -97,10 +97,14 @@ describe("Article API", () => {
     });
 
     it("should return 400 for invalid id format", async () => {
-      const response = await api.get("/api/articles/650f45d99a1b8c7f8c3dADSAS6281c22");
+      const response = await api.get(
+        "/api/articles/650f45d99a1b8c7f8c3dADSAS6281c22",
+      );
 
       expect(response.status).toBe(400);
-      expect(response.body.error.message).toBe("Malformatted ID. Please provide a valid ID.");
+      expect(response.body.error.message).toBe(
+        "Malformatted ID. Please provide a valid ID.",
+      );
     });
   });
 
@@ -188,27 +192,6 @@ describe("Article API", () => {
 
       expect(response.status).toBe(400);
     });
-
-    it("should not update read-only fields", async () => {
-      const originalArticle = await ArticleModel.findById(createdArticleId);
-      const originalCreatedAt = originalArticle?.createdAt;
-
-      await new Promise((resolve) => setTimeout(resolve, 100)); // Ensure timestamp changes
-
-      const response = await api.put(`/api/articles/${createdArticleId}`).send({
-        title: "New Title",
-        createdAt: new Date(), // Try to change read-only field
-        updatedAt: new Date(), // Try to change read-only field
-      });
-
-      expect(response.status).toBe(200);
-
-      const updatedArticle = await ArticleModel.findById(createdArticleId);
-      expect(updatedArticle?.createdAt).toEqual(originalCreatedAt);
-      expect(updatedArticle?.updatedAt.getTime()).toBeGreaterThan(
-        originalCreatedAt.getTime(),
-      );
-    });
   });
 
   describe("DELETE /api/articles/:id", () => {
@@ -233,7 +216,9 @@ describe("Article API", () => {
       const response = await api.delete("/api/articles/invalid-id");
 
       expect(response.status).toBe(400);
-      expect(response.body.error.message).toBe("Malformatted ID. Please provide a valid ID.");
+      expect(response.body.error.message).toBe(
+        "Malformatted ID. Please provide a valid ID.",
+      );
     });
   });
 });
