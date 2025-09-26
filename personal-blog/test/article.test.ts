@@ -70,8 +70,8 @@ describe("Article API", () => {
 
       const response = await api.get("/api/articles");
       expect(response.status).toBe(200);
-      expect(response.body).toHaveLength(3); // 2 new + 1 from beforeEach
-      expect(response.body[0].title).toBe("Published 2"); // Orden descendente
+      expect(response.body).toHaveLength(3);
+      expect(response.body[0].title).toBe("Published 2");
       expect(response.body[1].title).toBe("Published 1");
       expect(response.body[2].title).toBe(testArticle.title);
     });
